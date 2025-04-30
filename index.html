@@ -87,7 +87,9 @@
       "Udah tamat",
       "Jangan lupa",
       "Aku cinta kamu",
-      "(link Spotify)"
+      '<a href="https://open.spotify.com/track/1hWDc5jD5br9pXSOtubFlf?si=lLEVs2W0QIiFcSTJvNNYMw&context=spotify%3Aplaylist%3A37i9dQZF1E8LO1fkSaMrsh" target="_blank" style="color:#7cfc00; text-decoration:none;">dah selesai beneran</a>',
+      "eh",
+      "dah habis"
     ];
 
     let index = 0;
@@ -112,7 +114,7 @@
 
     function typeWriter(text, i = 0) {
       if (i < text.length) {
-        letterText.textContent += text.charAt(i);
+        letterText.innerHTML += text.charAt(i);
         setTimeout(() => typeWriter(text, i + 1), 30);
       }
     }
@@ -122,7 +124,7 @@
       showHeartEffect();
 
       if (index < letter.length) {
-        letterText.textContent = '';
+        letterText.innerHTML = '';
         typeWriter(letter[index]);
         index++;
         if (index === letter.length) {
@@ -133,7 +135,7 @@
         alert('Salam ganteng sagara anak minikrep');
         index = 0;
         nextButton.textContent = 'ANJAY BUTTON';
-        letterText.textContent = '';
+        letterText.innerHTML = '';
       }
     }
 
