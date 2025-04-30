@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minecraft Love Letter</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+
   <style>
+    @font-face {
+      font-family: 'MinecrafterAlt';
+      src: url('MinecrafterAlt.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -23,36 +30,13 @@
       text-align: center;
     }
 
-    @keyframes fadeScale {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .title-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      animation: fadeScale 1s ease-out forwards;
-    }
-
-    .icon {
-      width: 40px;
-      height: 40px;
-      margin: 0 10px;
-    }
-
     .title {
-      font-family: 'Minecraftia', sans-serif;
-      font-size: 32px;
-      color: #7cfc00;
+      font-family: 'MinecrafterAlt', sans-serif;
+      font-size: 36px;
+      color: #00ffcc;
       text-shadow: 2px 2px #000;
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in;
     }
 
     #letter-box {
@@ -94,6 +78,11 @@
       100% { opacity: 0; transform: translateY(-100px); }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .spotify-link {
       color: #7cfc00;
       text-decoration: none;
@@ -105,11 +94,7 @@
   </style>
 </head>
 <body>
-  <div class="title-wrapper">
-    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d0/Creeper_JE3_BE3.png" alt="Creeper" class="icon">
-    <div class="title">lets play (mine)craft</div>
-    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/60/Zombie_JE2_BE2.png" alt="Zombie Steve" class="icon">
-  </div>
+  <div class="title">Let's Play (Mine)Craft</div>
 
   <div id="letter-box">
     <p id="letter-text"></p>
@@ -174,7 +159,6 @@
 
       if (index < letter.length) {
         letterText.innerHTML = '';
-
         const currentText = letter[index];
         if (currentText.includes('<a')) {
           letterText.innerHTML = currentText;
