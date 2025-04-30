@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Love Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://i.imgur.com/mX1yNiu.png');
+      background-size: cover;
+      font-family: 'Press Start 2P', cursive;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    #letter-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 4px solid #5c4033;
+      padding: 30px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #000;
+      position: relative;
+    }
+    #next-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #7cfc00;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px #4caf50;
+    }
+    #next-button:hover {
+      background-color: #6bd100;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://i.imgur.com/QZ0p0nb.png') no-repeat center center / contain;
+      animation: floatUp 1s ease-out forwards;
+    }
+    @keyframes floatUp {
+      0% {opacity: 1; transform: translateY(0);}
+      100% {opacity: 0; transform: translateY(-100px);}
+    }
+  </style>
+</head>
+<body>
+  <div id="letter-box">
+    <p id="letter-text"></p>
+    <button id="next-button">ANJAY BUTTON</button>
+  </div><audio id="click-sound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
+
+  <script>
+    const letter = [
+      "Hai kamu...",
+      "Aku cuma mau bilang sesuatu...",
+      "Aku Cinta Nasi Padang",
+      "Tapi...",
+      "Aku juga cinta kamu",
+      "Will u be my nasi padang?",
+      "Yes please"
+    ];
+
+    let index = 0;
+    const letterText = document.getElementById('letter-text');
+    const nextButton = document.getElementById('next-button');
+    const clickSound = document.getElementById('click-sound');
+    const letterBox = document.getElementById('letter-box');
+
+    function showHeartEffect() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 90 + '%';
+      letterBox.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    }
+
+    function showNextLine() {
+      clickSound.play();
+      showHeartEffect();
+
+      if (index < letter.length) {
+        letterText.textContent = letter[index];
+        index++;
+        if (index === letter.length) {
+          nextButton.textContent = 'BALAS';
+        }
+      } else {
+        alert('Salam ganteng anak minikrep');
+        index = 0;
+        nextButton.textContent = 'LOVE';
+        letterText.textContent = '';
+      }
+    }
+
+    nextButton.addEventListener('click', showNextLine);
+    showNextLine();
+  </script></body>
+</html>
