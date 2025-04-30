@@ -68,6 +68,7 @@
   </div>
 
   <audio id="click-sound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
+  <audio id="love-sound" src="https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3"></audio>
 
   <script>
     const letter = [
@@ -84,6 +85,7 @@
     const letterText = document.getElementById('letter-text');
     const nextButton = document.getElementById('next-button');
     const clickSound = document.getElementById('click-sound');
+    const loveSound = document.getElementById('love-sound');
     const letterBox = document.getElementById('letter-box');
 
     function showHeartEffect() {
@@ -94,17 +96,26 @@
       setTimeout(() => heart.remove(), 1000);
     }
 
+    function typeWriter(text, i = 0) {
+      if (i < text.length) {
+        letterText.textContent += text.charAt(i);
+        setTimeout(() => typeWriter(text, i + 1), 30);
+      }
+    }
+
     function showNextLine() {
       clickSound.play();
       showHeartEffect();
 
       if (index < letter.length) {
-        letterText.textContent = letter[index];
+        letterText.textContent = '';
+        typeWriter(letter[index]);
         index++;
         if (index === letter.length) {
           nextButton.textContent = 'BALAS';
         }
       } else {
+        loveSound.play();
         alert('Salam ganteng anak minikrep');
         index = 0;
         nextButton.textContent = 'LOVE';
