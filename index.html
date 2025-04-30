@@ -11,6 +11,7 @@
       padding: 0;
       background: url('back.jpeg');
       background-size: cover;
+      background-position: center;
       font-family: 'Press Start 2P', cursive;
       color: white;
       display: flex;
@@ -30,6 +31,7 @@
       border-radius: 12px;
       box-shadow: 0 0 10px #000;
       position: relative;
+      overflow: hidden;
     }
 
     #next-button {
@@ -49,10 +51,9 @@
 
     .heart {
       position: absolute;
-      width: 20px;
-      height: 20px;
       background: url('heard.png') no-repeat center center / contain;
       animation: floatUp 1s ease-out forwards;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -68,7 +69,7 @@
   </div>
 
   <audio id="click-sound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
-  <audio id="love-sound" src="https://www.myinstants.com/media/sounds/anime-wow-sound-effect.mp3"></audio>
+  <audio id="confetti-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_b163e7df7c.mp3"></audio>
 
   <script>
     const letter = [
@@ -85,15 +86,20 @@
     const letterText = document.getElementById('letter-text');
     const nextButton = document.getElementById('next-button');
     const clickSound = document.getElementById('click-sound');
-    const loveSound = document.getElementById('love-sound');
+    const confettiSound = document.getElementById('confetti-sound');
     const letterBox = document.getElementById('letter-box');
 
     function showHeartEffect() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 90 + '%';
-      letterBox.appendChild(heart);
-      setTimeout(() => heart.remove(), 1000);
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        const size = Math.random() * 20 + 10;
+        heart.style.width = heart.style.height = `${size}px`;
+        heart.style.left = Math.random() * 90 + '%';
+        heart.style.top = Math.random() * 90 + '%';
+        letterBox.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+      }
     }
 
     function typeWriter(text, i = 0) {
@@ -115,10 +121,10 @@
           nextButton.textContent = 'BALAS';
         }
       } else {
-        loveSound.play();
+        confettiSound.play();
         alert('Salam ganteng anak minikrep');
         index = 0;
-        nextButton.textContent = 'ANJAY BUTTON';
+        nextButton.textContent = 'LOVE';
         letterText.textContent = '';
       }
     }
