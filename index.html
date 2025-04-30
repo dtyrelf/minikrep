@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minecraft Love Letter</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -20,6 +21,26 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+    }
+
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+    }
+
+    .title {
+      font-family: 'Minecraftia', sans-serif;
+      font-size: 32px;
+      color: #7cfc00;
+      text-shadow: 2px 2px #000;
     }
 
     #letter-box {
@@ -72,6 +93,12 @@
   </style>
 </head>
 <body>
+  <div class="title-wrapper">
+    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/d/d0/Creeper_JE3_BE3.png" alt="Creeper" class="icon">
+    <div class="title"> lets play (mine)craft</div>
+    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/60/Zombie_JE2_BE2.png" alt="Zombie Steve" class="icon">
+  </div>
+
   <div id="letter-box">
     <p id="letter-text"></p>
     <button id="next-button">ANJAY BUTTON</button>
@@ -138,7 +165,6 @@
 
         const currentText = letter[index];
         if (currentText.includes('<a')) {
-          // langsung tampilkan kalau HTML
           letterText.innerHTML = currentText;
         } else {
           typeWriter(currentText);
