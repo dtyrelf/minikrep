@@ -96,7 +96,7 @@
       "Udah tamat",
       "Jangan lupa",
       "Aku cinta kamu",
-      '<a href="https://open.spotify.com/track/1hWDc5jD5br9pXSOtubFlf?si=lLEVs2W0QIiFcSTJvNNYMw&context=spotify%3Aplaylist%3A37i9dQZF1E8LO1fkSaMrsh" target="_blank" style="color:#7cfc00; text-decoration:none;"> ini lagu keren ini</a>',
+      '<a href="https://open.spotify.com/track/1hWDc5jD5br9pXSOtubFlf?si=lLEVs2W0QIiFcSTJvNNYMw&context=spotify%3Aplaylist%3A37i9dQZF1E8LO1fkSaMrsh" class="spotify-link" target="_blank">ini lagu keren ini</a>',
       "dah habis beneran",
       "eh",
       "dah habis"
@@ -135,7 +135,15 @@
 
       if (index < letter.length) {
         letterText.innerHTML = '';
-        typeWriter(letter[index]);
+
+        const currentText = letter[index];
+        if (currentText.includes('<a')) {
+          // langsung tampilkan kalau HTML
+          letterText.innerHTML = currentText;
+        } else {
+          typeWriter(currentText);
+        }
+
         index++;
         if (index === letter.length) {
           nextButton.textContent = 'BALAS';
