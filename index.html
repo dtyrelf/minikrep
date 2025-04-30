@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzS7bn8eDWKOoI36zc4oKla_jA-Mr14E_sJoz5HrDqUNoOcnEeGLxKXFJ2&s=10');
+      background: url('back.jpg');
       background-size: cover;
       font-family: 'Press Start 2P', cursive;
       color: white;
@@ -19,6 +20,7 @@
       height: 100vh;
       text-align: center;
     }
+
     #letter-box {
       background-color: rgba(0, 0, 0, 0.7);
       border: 4px solid #5c4033;
@@ -29,6 +31,7 @@
       box-shadow: 0 0 10px #000;
       position: relative;
     }
+
     #next-button {
       margin-top: 20px;
       padding: 10px 20px;
@@ -39,19 +42,22 @@
       border-radius: 8px;
       box-shadow: 0 4px #4caf50;
     }
+
     #next-button:hover {
       background-color: #6bd100;
     }
+
     .heart {
       position: absolute;
       width: 20px;
       height: 20px;
-      background: url('https://i.imgur.com/QZ0p0nb.png') no-repeat center center / contain;
+      background: url('heard.png') no-repeat center center / contain;
       animation: floatUp 1s ease-out forwards;
     }
+
     @keyframes floatUp {
-      0% {opacity: 1; transform: translateY(0);}
-      100% {opacity: 0; transform: translateY(-100px);}
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100px); }
     }
   </style>
 </head>
@@ -59,7 +65,9 @@
   <div id="letter-box">
     <p id="letter-text"></p>
     <button id="next-button">ANJAY BUTTON</button>
-  </div><audio id="click-sound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
+  </div>
+
+  <audio id="click-sound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
 
   <script>
     const letter = [
@@ -106,5 +114,6 @@
 
     nextButton.addEventListener('click', showNextLine);
     showNextLine();
-  </script></body>
+  </script>
+</body>
 </html>
